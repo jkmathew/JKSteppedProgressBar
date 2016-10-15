@@ -1,0 +1,16 @@
+PODS:
+  - JKSteppedProgressBar (0.1.0)
+
+DEPENDENCIES:
+  - JKSteppedProgressBar (from `../`)
+
+EXTERNAL SOURCES:
+  JKSteppedProgressBar:
+    :path: ../
+
+SPEC CHECKSUMS:
+  JKSteppedProgressBar: 7074bd8a4b37f0dad48e7996bf6adc6495b4160c
+
+PODFILE CHECKSUM: 7484a56bf95842b005f6fc44a694218056c11452
+
+COCOAPODS: 1.0.1
