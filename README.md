@@ -24,7 +24,6 @@ JKSteppedProgressBar can be added and configured directly from storyboard.
 ## Demo
 [![Demo Video](http://img.youtube.com/vi/gKFrOL7nD6I/0.jpg)](http://www.youtube.com/watch?v=gKFrOL7nD6I)
 
-
 ## Author
 
 Johnykutty, johnykutty.mathew@gmail.com
