@@ -16,14 +16,13 @@ To use JKSteppedProgressBar Xcode 8.0 or later is required
 JKSteppedProgressBar is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
-## Demo
-[![Demo Video](http://img.youtube.com/vi/gKFrOL7nD6I/0.jpg)](http://www.youtube.com/watch?v=gKFrOL7nD6I)
-
-
 ```ruby
 pod 'JKSteppedProgressBar'
 ```
 JKSteppedProgressBar can be added and configured directly from storyboard. 
+
+## Demo
+[![Demo Video](http://img.youtube.com/vi/gKFrOL7nD6I/0.jpg)](http://www.youtube.com/watch?v=gKFrOL7nD6I)
 
 
 ## Author
