@@ -10,20 +10,23 @@
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
 ## Requirements
+To use JKSteppedProgressBar Xcode 8.0 or later is required
 
 ## Installation
-
 JKSteppedProgressBar is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod "JKSteppedProgressBar"
+pod 'JKSteppedProgressBar'
 ```
+JKSteppedProgressBar can be added and configured directly from storyboard. 
+
 
 ## Author
 
-jk, johnykutty.mathew@gmail.com
+Johnykutty, johnykutty.mathew@gmail.com
 
 ## License
 
 JKSteppedProgressBar is available under the MIT license. See the LICENSE file for more info.
+
