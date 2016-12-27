@@ -80,7 +80,7 @@ open class SteppedProgressBar: UIView {
 
         let context = UIGraphicsGetCurrentContext()
         
-        func drawTabs(_ from: Int, to: Int, color: UIColor, textColor: UIColor) -> (start: CGPoint, end: CGPoint) {
+        func drawTabs(from from: Int, to: Int, color: UIColor, textColor: UIColor) -> (start: CGPoint, end: CGPoint) {
             let x = startX + (spacing + circleRadius) * CGFloat(from)
             var point = CGPoint(x: x, y: y)
             var start = point
@@ -127,14 +127,14 @@ open class SteppedProgressBar: UIView {
         }
         
         if currentTab == 0 {
-            drawTabs(0, to: count, color: inactiveColor, textColor: inactiveTextColor)
+            _ = drawTabs(from: 0, to: count, color: inactiveColor, textColor: inactiveTextColor)
         }
         else if currentTab == count {
-            drawTabs(0, to: count, color: activeColor, textColor: activeColor)
+            _ = drawTabs(from: 0, to: count, color: activeColor, textColor: activeColor)
         }
         else {
-            let first = drawTabs(0, to: currentTab , color: activeColor, textColor: activeColor).end
-            let second = drawTabs(currentTab, to: count, color: inactiveColor, textColor: inactiveTextColor).start
+            let first = drawTabs(from: 0, to: currentTab , color: activeColor, textColor: activeColor).end
+            let second = drawTabs(from: currentTab, to: count, color: inactiveColor, textColor: inactiveTextColor).start
             let path = UIBezierPath()
             path.lineWidth = lineWidth
             
