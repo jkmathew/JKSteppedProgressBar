@@ -1,6 +1,6 @@
 # JKSteppedProgressBar
 
-[![CI Status](http://img.shields.io/travis/jk/JKSteppedProgressBar.svg?style=flat)](https://travis-ci.org/jk/JKSteppedProgressBar)
+[![CI Status](http://img.shields.io/travis/Johnykutty/JKSteppedProgressBar.svg?style=flat)](https://travis-ci.org/Johnykutty/JKSteppedProgressBar)
 [![Version](https://img.shields.io/cocoapods/v/JKSteppedProgressBar.svg?style=flat)](http://cocoapods.org/pods/JKSteppedProgressBar)
 [![License](https://img.shields.io/cocoapods/l/JKSteppedProgressBar.svg?style=flat)](http://cocoapods.org/pods/JKSteppedProgressBar)
 [![Platform](https://img.shields.io/cocoapods/p/JKSteppedProgressBar.svg?style=flat)](http://cocoapods.org/pods/JKSteppedProgressBar)
