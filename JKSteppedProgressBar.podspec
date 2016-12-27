@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
     s.name             = 'JKSteppedProgressBar'
-    s.version          = '0.2.0'
+    s.version          = '0.2.1'
     s.summary          = 'JKSteppedProgressBar is an iOS UI component that indicates step by step progress'
 
 # This description is used to generate tags and improve search results.

@@ -80,15 +80,15 @@ open class SteppedProgressBar: UIView {
 
         let context = UIGraphicsGetCurrentContext()
         
-        func drawTabs(from from: Int, to: Int, color: UIColor, textColor: UIColor) -> (start: CGPoint, end: CGPoint) {
-            let x = startX + (spacing + circleRadius) * CGFloat(from)
+        func drawTabs(from begin: Int, to end: Int, color: UIColor, textColor: UIColor) -> (start: CGPoint, end: CGPoint) {
+            let x = startX + (spacing + circleRadius) * CGFloat(begin)
             var point = CGPoint(x: x, y: y)
             var start = point
             start.x -= circleRadius / 2.0
             
             let path = UIBezierPath()
             path.lineWidth = lineWidth
-            for i in from..<to {
+            for i in begin..<end {
                 //draw circle
                 path.move(to: point)
                 let buttonRect = circleRect(point, radius: circleRadius)
@@ -114,7 +114,7 @@ open class SteppedProgressBar: UIView {
                 point.x += circleRadius / 2.0
                 path.move(to: point)
                 
-                if i != (to - 1) {
+                if i != (end - 1) {
                     //draw trailinng line
                     point.x += spacing
                     path.addLine(to: point)
