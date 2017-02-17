@@ -2,9 +2,9 @@
 
 [![CI Status](http://img.shields.io/travis/Johnykutty/JKSteppedProgressBar.svg?style=flat)](https://travis-ci.org/Johnykutty/JKSteppedProgressBar)
 [![Version](https://img.shields.io/cocoapods/v/JKSteppedProgressBar.svg?style=flat)](http://cocoapods.org/pods/JKSteppedProgressBar)
-[![License](https://img.shields.io/cocoapods/l/JKSteppedProgressBar.svg?style=flat)](http://cocoapods.org/pods/JKSteppedProgressBar)
-[![Platform](https://img.shields.io/cocoapods/p/JKSteppedProgressBar.svg?style=flat)](http://cocoapods.org/pods/JKSteppedProgressBar)
 [![codebeat badge](https://codebeat.co/badges/bd080c48-5f50-42b3-9ff6-5cef2b192ad5)](https://codebeat.co/projects/github-com-johnykutty-jksteppedprogressbar)
+[![Platform](https://img.shields.io/cocoapods/p/JKSteppedProgressBar.svg?style=flat)](http://cocoapods.org/pods/JKSteppedProgressBar)
+[![License](https://img.shields.io/cocoapods/l/JKSteppedProgressBar.svg?style=flat)](http://cocoapods.org/pods/JKSteppedProgressBar)
 
 ## Example
 

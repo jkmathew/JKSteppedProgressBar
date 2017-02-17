@@ -57,74 +57,24 @@ open class SteppedProgressBar: UIView {
         }
     }
     
+    private var actualSpacing: CGFloat {
+        return (circleSpacing == SteppedProgressBarAutomaticDimension) ? (frame.width - 6.0 - (CGFloat(titles.count) * circleRadius)) / CGFloat(titles.count - 1) : circleSpacing
+    }
+    
     open var titles = ["One", "Two","Three", "Four","Five", "Six"] {
         didSet {
             self.setNeedsDisplay()
         }
     }
     
-
     override open func awakeFromNib() {
         super.awakeFromNib()
         paragraphStyle.alignment = .center
     }
-    
  
     override open func draw(_ rect: CGRect) {
-        let spacing: CGFloat = (circleSpacing == SteppedProgressBarAutomaticDimension) ? (rect.width - 6.0 - (CGFloat(titles.count) * circleRadius)) / CGFloat(titles.count - 1) : circleSpacing
         let count = titles.count
-        let middleX = rect.midX
-        let startX =  middleX - (CGFloat(count - 1) * (spacing + circleRadius) / 2.0)
-        let y = rect.midY
-        var tv: UITableView = UITableView()
-
         let context = UIGraphicsGetCurrentContext()
-        
-        func drawTabs(from begin: Int, to end: Int, color: UIColor, textColor: UIColor) -> (start: CGPoint, end: CGPoint) {
-            let x = startX + (spacing + circleRadius) * CGFloat(begin)
-            var point = CGPoint(x: x, y: y)
-            var start = point
-            start.x -= circleRadius / 2.0
-            
-            let path = UIBezierPath()
-            path.lineWidth = lineWidth
-            for i in begin..<end {
-                //draw circle
-                path.move(to: point)
-                let buttonRect = circleRect(point, radius: circleRadius)
-                let circlePath = UIBezierPath(ovalIn: buttonRect)
-                path.append(circlePath)
-                
-                //draw index
-                let index =  i
-                let buttonTitle = "\(index + 1)"
-                let font = UIFont.boldSystemFont(ofSize: 14.0)
-                
-                var attributes = [NSForegroundColorAttributeName : textColor, NSParagraphStyleAttributeName: paragraphStyle, NSFontAttributeName: font]
-                let attributedButtonTitle = NSAttributedString(string: buttonTitle, attributes: attributes)
-                drawString(attributedButtonTitle, center: point)
-                
-                var titleCenter = point
-                titleCenter.y += circleRadius * 0.75
-                let title = titles[index]
-                attributes[NSFontAttributeName] = UIFont.boldSystemFont(ofSize: 12.0)
-                let attributedTitle = NSAttributedString(string: title, attributes: attributes)
-                drawString(attributedTitle, center: titleCenter)
-                
-                point.x += circleRadius / 2.0
-                path.move(to: point)
-                
-                if i != (end - 1) {
-                    //draw trailinng line
-                    point.x += spacing
-                    path.addLine(to: point)
-                    point.x += circleRadius / 2.0
-                }
-            }
-            context?.setStrokeColor(color.cgColor)
-            path.stroke()
-            return (start: start, end: point)
-        }
         
         if currentTab == 0 {
             _ = drawTabs(from: 0, to: count, color: inactiveColor, textColor: inactiveTextColor)
@@ -143,6 +93,58 @@ open class SteppedProgressBar: UIView {
             context?.setStrokeColor(inactiveColor.cgColor)
             path.stroke()
         }
+    }
+    
+    func drawTabs(from begin: Int, to end: Int, color: UIColor, textColor: UIColor) -> (start: CGPoint, end: CGPoint) {
+        let startX =  bounds.midX - (CGFloat(titles.count - 1) * (actualSpacing + circleRadius) / 2.0)
+        let x = startX + (actualSpacing + circleRadius) * CGFloat(begin)
+        var point = CGPoint(x: x, y: bounds.midY)
+        var start = point
+        start.x -= circleRadius / 2.0
+        
+        let path = UIBezierPath()
+        path.lineWidth = lineWidth
+        for i in begin..<end {
+            draw(step: i, path: path, start : &point, textColor: textColor)
+            if i != (end - 1) {
+                //draw trailinng line
+                point.x += actualSpacing
+                path.addLine(to: point)
+                point.x += circleRadius / 2.0
+            }
+        }
+        let context = UIGraphicsGetCurrentContext()
+        context?.setStrokeColor(color.cgColor)
+        path.stroke()
+        return (start: start, end: point)
+    }
+    
+    func draw(step i: Int, path: UIBezierPath, start point: inout CGPoint, textColor: UIColor) {
+        //draw circle
+        path.move(to: point)
+        let buttonRect = circleRect(point, radius: circleRadius)
+        let circlePath = UIBezierPath(ovalIn: buttonRect)
+        path.append(circlePath)
+        
+        //draw index
+        let index =  i
+        let buttonTitle = "\(index + 1)"
+        let font = UIFont.boldSystemFont(ofSize: 14.0)
+        
+        var attributes = [NSForegroundColorAttributeName : textColor, NSParagraphStyleAttributeName: paragraphStyle, NSFontAttributeName: font]
+        let attributedButtonTitle = NSAttributedString(string: buttonTitle, attributes: attributes)
+        drawString(attributedButtonTitle, center: point)
+        
+        var titleCenter = point
+        titleCenter.y += circleRadius * 0.75
+        let title = titles[index]
+        attributes[NSFontAttributeName] = UIFont.boldSystemFont(ofSize: 12.0)
+        let attributedTitle = NSAttributedString(string: title, attributes: attributes)
+        drawString(attributedTitle, center: titleCenter)
+        
+        point.x += circleRadius / 2.0
+        path.move(to: point)
+        
     }
     
     func drawString(_ string: NSAttributedString, center: CGPoint) {
