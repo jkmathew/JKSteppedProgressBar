@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
     s.name             = 'JKSteppedProgressBar'
-    s.version          = '0.2.1'
+    s.version          = '0.2.2'
     s.summary          = 'JKSteppedProgressBar is an iOS UI component that indicates step by step progress'
 
 # This description is used to generate tags and improve search results.
@@ -25,7 +25,7 @@ Pod::Spec.new do |s|
     # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
     s.license          = { :type => 'MIT', :file => 'LICENSE' }
     s.author           = { 'Johnykutty Mathew' => 'johnykutty.mathew@gmail.com' }
-    s.source           = { :git => 'https://github.com/Johnykutty/JKSteppedProgressBar.git', :tag => s.version.to_s }
+    s.source           = { :git => 'https://github.com/jkmathew/JKSteppedProgressBar.git', :tag => s.version.to_s }
     # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
     s.ios.deployment_target = '8.0'
