@@ -10,6 +10,13 @@ import UIKit
 
 public let SteppedProgressBarAutomaticDimension: CGFloat = -1
 
+public enum StepDrawingMode: Int {
+    case fill
+    case drawIndex
+    // TODO:
+    case image
+}
+
 @IBDesignable
 open class SteppedProgressBar: UIView {
 
@@ -39,6 +46,14 @@ open class SteppedProgressBar: UIView {
         }
     }
     
+    // Addressing issue #3
+    // https://github.com/jkmathew/JKSteppedProgressBar/issues/3
+    @IBInspectable open var titleOffset: CGFloat = 0 {
+        didSet {
+            self.setNeedsDisplay()
+        }
+    }
+    
     @IBInspectable open var circleSpacing: CGFloat = SteppedProgressBarAutomaticDimension {
         didSet {
             self.setNeedsDisplay()
@@ -52,6 +67,12 @@ open class SteppedProgressBar: UIView {
     }
     
     @IBInspectable open var currentTab: Int = 0 {
+        didSet {
+            self.setNeedsDisplay()
+        }
+    }
+    
+    open var stepDrawingMode: StepDrawingMode = .drawIndex {
         didSet {
             self.setNeedsDisplay()
         }
@@ -77,24 +98,32 @@ open class SteppedProgressBar: UIView {
         let context = UIGraphicsGetCurrentContext()
         
         if currentTab == 0 {
-            _ = drawTabs(from: 0, to: count, color: inactiveColor, textColor: inactiveTextColor)
+            drawTabs(from: 0, to: count, color: inactiveColor, textColor: inactiveTextColor)
         }
         else if currentTab == count {
-            _ = drawTabs(from: 0, to: count, color: activeColor, textColor: activeColor)
+            drawTabs(from: 0, to: count, color: activeColor, textColor: activeColor)
         }
         else {
-            let first = drawTabs(from: 0, to: currentTab , color: activeColor, textColor: activeColor).end
-            let second = drawTabs(from: currentTab, to: count, color: inactiveColor, textColor: inactiveTextColor).start
+            // Addressing issue #3
+            // https://github.com/jkmathew/JKSteppedProgressBar/issues/3
+            // Drawing in the order 1.inactive, 2.Line between active and inactive, 3.Active to avoid overlaping issue
+            let end = drawTabs(from: currentTab, to: count, color: inactiveColor, textColor: inactiveTextColor).start
             let path = UIBezierPath()
             path.lineWidth = lineWidth
             
-            path.move(to: first)
-            path.addLine(to: second)
+            var start = end
+            start.x -= actualSpacing
+            path.move(to: start)
+            path.addLine(to: end)
             context?.setStrokeColor(inactiveColor.cgColor)
             path.stroke()
+            
+            drawTabs(from: 0, to: currentTab , color: activeColor, textColor: activeColor)
+         
         }
     }
     
+    @discardableResult
     func drawTabs(from begin: Int, to end: Int, color: UIColor, textColor: UIColor) -> (start: CGPoint, end: CGPoint) {
         let startX =  bounds.midX - (CGFloat(titles.count - 1) * (actualSpacing + circleRadius) / 2.0)
         let x = startX + (actualSpacing + circleRadius) * CGFloat(begin)
@@ -115,7 +144,11 @@ open class SteppedProgressBar: UIView {
         }
         let context = UIGraphicsGetCurrentContext()
         context?.setStrokeColor(color.cgColor)
+        context?.setFillColor(color.cgColor)
         path.stroke()
+        if stepDrawingMode == .fill {
+            path.fill()
+        }
         return (start: start, end: point)
     }
     
@@ -124,30 +157,33 @@ open class SteppedProgressBar: UIView {
         path.move(to: point)
         let buttonRect = circleRect(point, radius: circleRadius)
         let circlePath = UIBezierPath(ovalIn: buttonRect)
-        path.append(circlePath)
         
+        var attributes = [NSForegroundColorAttributeName : textColor, NSParagraphStyleAttributeName: paragraphStyle]
+
         //draw index
         let index =  i
-        let buttonTitle = "\(index + 1)"
-        let font = UIFont.boldSystemFont(ofSize: 14.0)
-        
-        var attributes = [NSForegroundColorAttributeName : textColor, NSParagraphStyleAttributeName: paragraphStyle, NSFontAttributeName: font]
-        let attributedButtonTitle = NSAttributedString(string: buttonTitle, attributes: attributes)
-        drawString(attributedButtonTitle, center: point)
+        if stepDrawingMode == .drawIndex {
+            let buttonTitle = "\(index + 1)"
+            let font = UIFont.boldSystemFont(ofSize: 14.0)
+            attributes[NSFontAttributeName] = font
+            let attributedButtonTitle = NSAttributedString(string: buttonTitle, attributes: attributes)
+            draw(string: attributedButtonTitle, center: point)
+        }
+        path.append(circlePath)
         
         var titleCenter = point
-        titleCenter.y += circleRadius * 0.75
+        titleCenter.y += circleRadius * 0.75 + titleOffset
         let title = titles[index]
         attributes[NSFontAttributeName] = UIFont.boldSystemFont(ofSize: 12.0)
         let attributedTitle = NSAttributedString(string: title, attributes: attributes)
-        drawString(attributedTitle, center: titleCenter)
+        draw(string: attributedTitle, center: titleCenter)
         
         point.x += circleRadius / 2.0
         path.move(to: point)
         
     }
     
-    func drawString(_ string: NSAttributedString, center: CGPoint) {
+    func draw(string: NSAttributedString, center: CGPoint) {
         var rect = string.boundingRect(with: CGSize(width: 1000, height: 1000), options: .usesFontLeading, context: nil)
         let size = rect.size
         let origin = CGPoint(x: center.x - size.width / 2.0, y: center.y - size.height / 2.0)
