@@ -8,7 +8,11 @@
 
 import UIKit
 import JKSteppedProgressBar
-
+extension String {
+    var localized: String {
+        return NSLocalizedString(self, comment: "")
+    }
+}
 class ViewController: UIViewController {
 
     @IBOutlet weak var currentTabLabel: UILabel!
@@ -19,7 +23,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        progressbar.titles = ["Step 1", "Step 2", "Step 3 step again",]
+        progressbar.titles = ["Step 1".localized, "Step 2".localized, "Step 3 step again".localized,]
         progressbar.insets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 30)
         updateButtons(0)
     }

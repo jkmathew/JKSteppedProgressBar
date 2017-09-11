@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  JKSteppedProgressBar
+
+  Created by Johnykutty on 9/11/17.
+  Copyright © 2017 CocoaPods. All rights reserved.
+*/
+"Step 1" = "Step 1";
+"Step 2" = "Step 2";
+"Step 3 step again" = "Step 3 step again";

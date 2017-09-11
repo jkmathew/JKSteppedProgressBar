@@ -105,6 +105,9 @@ open class SteppedProgressBar: UIView {
         return correctedFrame
     }
     
+    private var languageFactor: CGFloat {
+        return (UIApplication.shared.userInterfaceLayoutDirection == .rightToLeft) ? -1 : 1
+    }
     override open func awakeFromNib() {
         super.awakeFromNib()
         paragraphStyle.alignment = .center
@@ -129,7 +132,7 @@ open class SteppedProgressBar: UIView {
             path.lineWidth = lineWidth
             
             var start = end
-            start.x -= actualSpacing
+            start.x -= languageFactor * actualSpacing
             path.move(to: start)
             path.addLine(to: end)
             context?.setStrokeColor(inactiveColor.cgColor)
@@ -142,13 +145,12 @@ open class SteppedProgressBar: UIView {
     
     @discardableResult
     func drawTabs(from begin: Int, to end: Int, color: UIColor, textColor: UIColor) -> (start: CGPoint, end: CGPoint) {
-    
-        
-        let startX =  availableFrame.midX - (CGFloat(titles.count - 1) * (actualSpacing + circleRadius) / 2.0)
-        let x = startX + (actualSpacing + circleRadius) * CGFloat(begin)
+        let halfX = (CGFloat(titles.count - 1) * (actualSpacing + circleRadius) / 2.0)
+        let startX =  availableFrame.midX - languageFactor * halfX
+        let x = startX + languageFactor * (actualSpacing + circleRadius) * CGFloat(begin)
         var point = CGPoint(x: x, y: availableFrame.midY)
         var start = point
-        start.x -= circleRadius / 2.0
+        start.x -= languageFactor * circleRadius / 2.0
         
         let path = UIBezierPath()
         path.lineWidth = lineWidth
@@ -156,9 +158,9 @@ open class SteppedProgressBar: UIView {
             draw(step: i, path: path, start : &point, textColor: textColor)
             if i != (end - 1) {
                 //draw trailinng line
-                point.x += actualSpacing
+                point.x += languageFactor * actualSpacing
                 path.addLine(to: point)
-                point.x += circleRadius / 2.0
+                point.x += languageFactor * circleRadius / 2.0
             }
         }
         let context = UIGraphicsGetCurrentContext()
@@ -198,7 +200,7 @@ open class SteppedProgressBar: UIView {
         let attributedTitle = NSAttributedString(string: title, attributes: attributes)
         draw(string: attributedTitle, center: titleCenter)
         
-        point.x += circleRadius / 2.0
+        point.x += languageFactor * circleRadius / 2.0
         path.move(to: point)
         
     }
