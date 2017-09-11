@@ -19,7 +19,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        progressbar.titles = ["Step 1", "Step 2", "Step 3", "Step 4", "Step 5"]
+        progressbar.titles = ["Step 1", "Step 2", "Step 3 step again",]
+        progressbar.insets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 30)
         updateButtons(0)
     }
 

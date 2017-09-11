@@ -78,14 +78,31 @@ open class SteppedProgressBar: UIView {
         }
     }
     
+    open var insets: UIEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0) {
+        didSet {
+            self.setNeedsDisplay()
+        }
+    }
+    
     private var actualSpacing: CGFloat {
-        return (circleSpacing == SteppedProgressBarAutomaticDimension) ? (frame.width - 6.0 - (CGFloat(titles.count) * circleRadius)) / CGFloat(titles.count - 1) : circleSpacing
+        return (circleSpacing == SteppedProgressBarAutomaticDimension) ? (availableFrame.width - 6.0 - (CGFloat(titles.count) * circleRadius)) / CGFloat(titles.count - 1) : circleSpacing
     }
     
     open var titles = ["One", "Two","Three", "Four","Five", "Six"] {
         didSet {
             self.setNeedsDisplay()
         }
+    }
+    
+    var availableFrame: CGRect {
+        var correctedFrame = bounds
+        correctedFrame.origin.x = insets.left
+        correctedFrame.origin.y = insets.top
+        
+        correctedFrame.size.width -= insets.left + insets.right
+        correctedFrame.size.height -= insets.top + insets.bottom
+        
+        return correctedFrame
     }
     
     override open func awakeFromNib() {
@@ -125,9 +142,11 @@ open class SteppedProgressBar: UIView {
     
     @discardableResult
     func drawTabs(from begin: Int, to end: Int, color: UIColor, textColor: UIColor) -> (start: CGPoint, end: CGPoint) {
-        let startX =  bounds.midX - (CGFloat(titles.count - 1) * (actualSpacing + circleRadius) / 2.0)
+    
+        
+        let startX =  availableFrame.midX - (CGFloat(titles.count - 1) * (actualSpacing + circleRadius) / 2.0)
         let x = startX + (actualSpacing + circleRadius) * CGFloat(begin)
-        var point = CGPoint(x: x, y: bounds.midY)
+        var point = CGPoint(x: x, y: availableFrame.midY)
         var start = point
         start.x -= circleRadius / 2.0
         
@@ -149,6 +168,7 @@ open class SteppedProgressBar: UIView {
         if stepDrawingMode == .fill {
             path.fill()
         }
+
         return (start: start, end: point)
     }
     
