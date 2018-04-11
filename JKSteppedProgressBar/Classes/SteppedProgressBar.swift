@@ -180,14 +180,22 @@ open class SteppedProgressBar: UIView {
         let buttonRect = circleRect(point, radius: circleRadius)
         let circlePath = UIBezierPath(ovalIn: buttonRect)
         
-        var attributes = [NSAttributedStringKey.foregroundColor : textColor, NSAttributedStringKey.paragraphStyle: paragraphStyle]
+        #if swift(>=4.0)
+            var attributes = [NSAttributedStringKey.foregroundColor : textColor, NSAttributedStringKey.paragraphStyle: paragraphStyle]
+        #else
+            var attributes = [NSForegroundColorAttributeName : textColor, NSParagraphStyleAttributeName: paragraphStyle]
+        #endif
 
         //draw index
         let index =  i
         if stepDrawingMode == .drawIndex {
             let buttonTitle = "\(index + 1)"
             let font = UIFont.boldSystemFont(ofSize: 14.0)
-            attributes[NSAttributedStringKey.font] = font
+            #if swift(>=4.0)
+                attributes[NSAttributedStringKey.font] = font
+            #else
+                attributes[NSFontAttributeName] = font
+            #endif
             let attributedButtonTitle = NSAttributedString(string: buttonTitle, attributes: attributes)
             draw(string: attributedButtonTitle, center: point)
         }
@@ -196,7 +204,11 @@ open class SteppedProgressBar: UIView {
         var titleCenter = point
         titleCenter.y += circleRadius * 0.75 + titleOffset
         let title = titles[index]
-        attributes[NSAttributedStringKey.font] = UIFont.boldSystemFont(ofSize: 12.0)
+        #if swift(>=4.0)
+            attributes[NSAttributedStringKey.font] = UIFont.boldSystemFont(ofSize: 12.0)
+        #else
+            attributes[NSFontAttributeName] = UIFont.boldSystemFont(ofSize: 12.0)
+        #endif
         let attributedTitle = NSAttributedString(string: title, attributes: attributes)
         draw(string: attributedTitle, center: titleCenter)
         
