@@ -143,6 +143,11 @@ open class SteppedProgressBar: UIView {
         }
     }
     
+    override open func layoutSubviews() {
+        super.layoutSubviews()
+        self.setNeedsDisplay()
+    }
+    
     @discardableResult
     func drawTabs(from begin: Int, to end: Int, color: UIColor, textColor: UIColor) -> (start: CGPoint, end: CGPoint) {
         let halfX = (CGFloat(titles.count - 1) * (actualSpacing + circleRadius) / 2.0)
