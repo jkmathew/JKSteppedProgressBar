@@ -533,7 +533,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F240FC41BB27546D84C7686A /* Pods-JKSteppedProgressBar_Example.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "${inherited}";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = JKSteppedProgressBar/Info.plist;
@@ -550,7 +550,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0B84DACA8DB26D24C966F007 /* Pods-JKSteppedProgressBar_Example.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "${inherited}";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = JKSteppedProgressBar/Info.plist;
@@ -567,6 +567,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B7760822DC581E7F95433F3E /* Pods-JKSteppedProgressBar_Tests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "${inherited}";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -584,6 +585,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0FABD168D9CED3EEBAB5D5A1 /* Pods-JKSteppedProgressBar_Tests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "${inherited}";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
