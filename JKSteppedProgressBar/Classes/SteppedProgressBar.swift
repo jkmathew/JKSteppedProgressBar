@@ -85,11 +85,21 @@ open class SteppedProgressBar: UIView {
     }
     
     private var actualSpacing: CGFloat {
-        return (circleSpacing == SteppedProgressBarAutomaticDimension) ? (availableFrame.width - 6.0 - (CGFloat(titles.count) * circleRadius)) / CGFloat(titles.count - 1) : circleSpacing
+        return (circleSpacing == SteppedProgressBarAutomaticDimension) ? (availableFrame.width - 6.0 - (CGFloat(numberOfItems) * circleRadius)) / CGFloat(numberOfItems - 1) : circleSpacing
     }
     
     open var titles = ["One", "Two","Three", "Four","Five", "Six"] {
         didSet {
+            self.setNeedsDisplay()
+        }
+    }
+    
+    /*
+     * setting images will only show the images instead of any text mentioned
+     */
+    open var images: [UIImage]? {
+        didSet {
+            stepDrawingMode = .image
             self.setNeedsDisplay()
         }
     }
@@ -108,26 +118,30 @@ open class SteppedProgressBar: UIView {
     private var languageFactor: CGFloat {
         return (UIApplication.shared.userInterfaceLayoutDirection == .rightToLeft) ? -1 : 1
     }
+    
+    private var numberOfItems: Int {
+        return stepDrawingMode == .image ? (images ?? []).count : titles.count
+    }
+    
     override open func awakeFromNib() {
         super.awakeFromNib()
         paragraphStyle.alignment = .center
     }
  
     override open func draw(_ rect: CGRect) {
-        let count = titles.count
         let context = UIGraphicsGetCurrentContext()
         
         if currentTab == 0 {
-            drawTabs(from: 0, to: count, color: inactiveColor, textColor: inactiveTextColor)
+            drawTabs(from: 0, to: numberOfItems, color: inactiveColor, textColor: inactiveTextColor)
         }
-        else if currentTab == count {
-            drawTabs(from: 0, to: count, color: activeColor, textColor: activeColor)
+        else if currentTab == numberOfItems {
+            drawTabs(from: 0, to: numberOfItems, color: activeColor, textColor: activeColor)
         }
         else {
             // Addressing issue #3
             // https://github.com/jkmathew/JKSteppedProgressBar/issues/3
             // Drawing in the order 1.inactive, 2.Line between active and inactive, 3.Active to avoid overlaping issue
-            let end = drawTabs(from: currentTab, to: count, color: inactiveColor, textColor: inactiveTextColor).start
+            let end = drawTabs(from: currentTab, to: numberOfItems, color: inactiveColor, textColor: inactiveTextColor).start
             let path = UIBezierPath()
             path.lineWidth = lineWidth
             
@@ -150,7 +164,7 @@ open class SteppedProgressBar: UIView {
     
     @discardableResult
     func drawTabs(from begin: Int, to end: Int, color: UIColor, textColor: UIColor) -> (start: CGPoint, end: CGPoint) {
-        let halfX = (CGFloat(titles.count - 1) * (actualSpacing + circleRadius) / 2.0)
+        let halfX = (CGFloat(numberOfItems - 1) * (actualSpacing + circleRadius) / 2.0)
         let startX =  availableFrame.midX - languageFactor * halfX
         let x = startX + languageFactor * (actualSpacing + circleRadius) * CGFloat(begin)
         var point = CGPoint(x: x, y: availableFrame.midY)
@@ -179,10 +193,26 @@ open class SteppedProgressBar: UIView {
         return (start: start, end: point)
     }
     
+    /*
+     * Draws the images with a predefined inset
+     */
+    func drawImage(step i: Int, at rect: CGRect) {
+        guard (images ?? []).count > i else {
+            return
+        }
+        let insideRect = rect.insetBy(dx: 8, dy: 8)
+        let image = ( images ?? [] )[i] as UIImage
+        image.draw(in: insideRect)
+    }
+    
     func draw(step i: Int, path: UIBezierPath, start point: inout CGPoint, textColor: UIColor) {
+        let buttonRect = CGRect.make(center: point, diameter: circleRadius)
+        if ( images ?? [] ).count > i {
+            drawImage(step: i, at: buttonRect)
+        }
+        
         //draw circle
         path.move(to: point)
-        let buttonRect = circleRect(point, radius: circleRadius)
         let circlePath = UIBezierPath(ovalIn: buttonRect)
         
         #if swift(>=4.0)
@@ -230,11 +260,4 @@ open class SteppedProgressBar: UIView {
         string.draw(in: rect)
         
     }
-    
-    func circleRect(_ center: CGPoint, radius: CGFloat) -> CGRect {
-        let halfR = radius / 2.0
-        let rect = CGRect(x: center.x - halfR, y: center.y - halfR, width: radius, height: radius)
-        return rect
-    }
-
 }

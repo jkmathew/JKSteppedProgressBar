@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -91,6 +92,36 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bpc-Bk-1Wh" customClass="SteppedProgressBar" customModule="JKSteppedProgressBar">
+                                <rect key="frame" x="20" y="257" width="335" height="85"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="85" id="nUf-sJ-3L5"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                        <real key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="inactiveTextColor">
+                                        <color key="value" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="inactiveColor">
+                                        <color key="value" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="activeColor">
+                                        <color key="value" red="0.24313725489999999" green="0.66666666669999997" blue="0.29411764709999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="circleRadius">
+                                        <real key="value" value="40"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="currentTab">
+                                        <integer key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="titleOffset">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -98,11 +129,14 @@
                             <constraint firstItem="WCC-jO-kGE" firstAttribute="leading" secondItem="cim-ZE-7AD" secondAttribute="trailing" constant="20" id="68u-7d-plG"/>
                             <constraint firstItem="WCC-jO-kGE" firstAttribute="centerX" secondItem="xz1-Jy-Azt" secondAttribute="centerX" id="AcA-qT-4fo"/>
                             <constraint firstItem="WCC-jO-kGE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="M5d-Pd-lAo"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="bpc-Bk-1Wh" secondAttribute="trailing" constant="4" id="Pve-r6-lIy"/>
                             <constraint firstItem="WCC-jO-kGE" firstAttribute="top" secondItem="xz1-Jy-Azt" secondAttribute="bottom" constant="12" id="c1D-Li-B1B"/>
                             <constraint firstItem="Xx9-ek-0HE" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="dWS-DA-1Bo"/>
                             <constraint firstItem="eHz-z6-WGH" firstAttribute="leading" secondItem="WCC-jO-kGE" secondAttribute="trailing" constant="20" id="dg7-VM-b8e"/>
                             <constraint firstItem="Xx9-ek-0HE" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="hUM-Iq-2ij"/>
                             <constraint firstItem="WCC-jO-kGE" firstAttribute="centerY" secondItem="eHz-z6-WGH" secondAttribute="centerY" id="ns9-Ds-2bp"/>
+                            <constraint firstItem="bpc-Bk-1Wh" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="4" id="pL7-Xx-N6z"/>
+                            <constraint firstItem="bpc-Bk-1Wh" firstAttribute="top" secondItem="eHz-z6-WGH" secondAttribute="bottom" constant="42.5" id="pQ4-Vf-Iem"/>
                             <constraint firstItem="WCC-jO-kGE" firstAttribute="centerY" secondItem="cim-ZE-7AD" secondAttribute="centerY" id="r1d-6m-I2X"/>
                             <constraint firstAttribute="trailing" secondItem="Xx9-ek-0HE" secondAttribute="trailing" constant="20" id="xHy-e3-WOm"/>
                         </constraints>
@@ -112,11 +146,12 @@
                         <outlet property="nextButton" destination="eHz-z6-WGH" id="eQw-Mm-goR"/>
                         <outlet property="prevButton" destination="cim-ZE-7AD" id="88e-fM-Dkw"/>
                         <outlet property="progressbar" destination="Xx9-ek-0HE" id="asi-0b-lw3"/>
+                        <outlet property="progressbarWithImages" destination="bpc-Bk-1Wh" id="qUg-KD-3Ni"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="510" y="310"/>
+            <point key="canvasLocation" x="509.60000000000002" y="309.89505247376314"/>
         </scene>
     </scenes>
 </document>
