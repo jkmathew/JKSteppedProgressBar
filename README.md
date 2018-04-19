@@ -21,12 +21,39 @@ pod 'JKSteppedProgressBar'
 ```
 JKSteppedProgressBar can be added and configured directly from storyboard. 
 
+## How to Add Stepped Progress Bar with Titles only
+- Add a blank UIView and set constraints
+- Set the Class & Module from identity inspector
+- Set the active & inactive color from Attributes inspector
+
+### setting custom title
+- Use the IBOutlet instance to set properties
+- Set your title array to _titles_ property
+```
+  progressbar.titles = ["Step 1", "Step 2", "Step 3"]
+```
+### setting custom title and images
+- Use the IBOutlet instance to set properties
+- Set your title array to _titles_ property
+- Set your images array to _images_ property
+```
+  progressbar.titles = ["Step 1", "Step 2", "Step 3"]
+  progressbar.images = [
+    UIImage(named: "DaisyDuck")!,
+    UIImage(named: "MickeyMouse")!,
+    UIImage(named: "MinnieMouse")!,
+  ]
+```
+
+
 ## Demo
 [![Demo Video](http://img.youtube.com/vi/gKFrOL7nD6I/0.jpg)](http://www.youtube.com/watch?v=gKFrOL7nD6I)
 
+
+
 ## TODO
+- [x] Add image for steps
 - [ ] Respect language direction for drawing
-- [ ] Add image for steps
 
 ## Author
 
