@@ -21,7 +21,7 @@ pod 'JKSteppedProgressBar'
 ```
 JKSteppedProgressBar can be added and configured directly from storyboard. 
 
-## How to Add Stepped Progress Bar with Titles only
+## How to Add Stepped Progress Bar
 - Add a blank UIView and set constraints
 - Set the Class & Module from identity inspector
 - Set the active & inactive color from Attributes inspector
