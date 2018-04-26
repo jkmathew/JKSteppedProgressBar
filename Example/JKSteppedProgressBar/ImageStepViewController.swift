@@ -29,6 +29,13 @@ class ImageStepViewController: UIViewController {
             UIImage(named: "MickeyMouse")!,
             UIImage(named: "MinnieMouse")!,
         ]
+        
+        // set the active step colors
+        progressbarWithImages.activeStepColors = [
+            UIColor.red,
+            UIColor.orange,
+            UIColor.green,
+        ]
     }
     
     // MARK: Misc
