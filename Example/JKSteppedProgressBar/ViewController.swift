@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var currentTabLabel: UILabel!
     @IBOutlet weak var progressbar: SteppedProgressBar!
     @IBOutlet weak var progressbarWithImages: SteppedProgressBar!
+    @IBOutlet weak var progressBarWithActiveImages: SteppedProgressBar!
     
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var prevButton: UIButton!
@@ -33,6 +34,18 @@ class ViewController: UIViewController {
         ]
     }
     
+    func configureProgressBarWithActiveImages() {
+        progressBarWithActiveImages.insets = inset
+        progressBarWithActiveImages.titles = ["Image 1".localized, "Image 2".localized, "Image 3".localized,]
+        progressBarWithActiveImages.activeImages = [
+            UIImage(named: "check")!,
+            UIImage(named: "check")!,
+            UIImage(named: "check")!,
+        ]
+        progressBarWithActiveImages.tintActiveImage = true
+
+    }
+    
     func configureTitleProgressBar() {
         progressbar.insets = inset
         progressbar.titles = ["Step 1".localized, "Step 2".localized, "Step 3 step again".localized,]
@@ -44,6 +57,7 @@ class ViewController: UIViewController {
         prevButton.isEnabled = currentTab > 0
         progressbar.currentTab = currentTab
         progressbarWithImages.currentTab = currentTab
+        progressBarWithActiveImages.currentTab = currentTab
         currentTabLabel.text = "\(currentTab)"
     }
     
@@ -52,6 +66,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         configureTitleProgressBar()
         configureProgressBarWithImages()
+        configureProgressBarWithActiveImages()
         updateButtons(0)
     }
 
