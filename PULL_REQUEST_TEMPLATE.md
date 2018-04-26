@@ -1,18 +1,18 @@
-<Change Short Title>: <Title>
+Change\: Short Description
 
-<Description>
+Long Decription
 
-<If any resolution of issues, mention>
+issues resolved: 17
 
 
--- Change Short titles -- 
+### Change Short titles
 
 1. Feature: Any new feature
 2. Fix: Any bug/issue fix
 3. Docs: Any document update
 
 
--- Example --
+### Example
 
 Feature: Add Image Support
 
