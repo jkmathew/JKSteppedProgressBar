@@ -4,6 +4,7 @@ Long Decription
 
 issues resolved: 17
 
+screenshots: if its a new feature or UI issue fix. keep the screenshots fit into the screen and easily identifiable.
 
 ### Change Short titles
 
