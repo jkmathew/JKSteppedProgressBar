@@ -95,6 +95,30 @@ open class SteppedProgressBar: UIView {
     }
     
     /*
+     This will redraw and change color for the steps which are done. For example, if we set this as Red, Orange,
+     Yellow, Green, then when you are at step one, it(circle and lines to circle) be Red, and when you are in second
+     step, line and circles till that step(circle 1, line 1, circle 2) will be Orange, and so on.., then, when you are
+     in fourth step it wil be Green from start circle to end circle. There by you can show the user a level of
+     completion if wanted through colors.
+     */
+    
+    open var activeStepColors: [UIColor]? {
+        didSet {
+            self.setNeedsDisplay()
+        }
+    }
+    
+    /* Returns the active step color to the caller, if its mentioned in activeStepColors array. If not return the
+     activeColor */
+    private func activeStepColor(_ tabIndex: Int) -> UIColor {
+        var activeStepColor = activeColor
+        if let activeStepColors = activeStepColors, tabIndex - 1 < activeStepColors.count {
+            activeStepColor = activeStepColors[tabIndex - 1]
+        }
+        return activeStepColor
+    }
+    
+    /*
      * setting images will only show the images instead of any text mentioned
      */
     open var images: [UIImage]? {
@@ -133,9 +157,8 @@ open class SteppedProgressBar: UIView {
         
         if currentTab == 0 {
             drawTabs(from: 0, to: numberOfItems, color: inactiveColor, textColor: inactiveTextColor)
-        }
-        else if currentTab == numberOfItems {
-            drawTabs(from: 0, to: numberOfItems, color: activeColor, textColor: activeColor)
+        } else if currentTab == numberOfItems {
+            drawTabs(from: 0, to: numberOfItems, color: activeStepColor(currentTab), textColor: activeStepColor(currentTab))
         }
         else {
             // Addressing issue #3
@@ -152,7 +175,7 @@ open class SteppedProgressBar: UIView {
             context?.setStrokeColor(inactiveColor.cgColor)
             path.stroke()
             
-            drawTabs(from: 0, to: currentTab , color: activeColor, textColor: activeColor)
+            drawTabs(from: 0, to: currentTab , color: activeStepColor(currentTab), textColor: activeStepColor(currentTab))
          
         }
     }
