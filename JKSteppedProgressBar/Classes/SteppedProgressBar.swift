@@ -96,7 +96,8 @@ open class SteppedProgressBar: UIView {
     
     // Changes the tint color of theactiveImages image to the activeColor
     @IBInspectable open  var tintActiveImage = false
-
+    @IBInspectable open var justCheckCompleted = true
+    
     /*
      This will redraw and change color for the steps which are done. For example, if we set this as Red, Orange,
      Yellow, Green, then when you are at step one, it(circle and lines to circle) be Red, and when you are in second
@@ -258,7 +259,7 @@ open class SteppedProgressBar: UIView {
         
         // Check if images are set and decide what image to draw
         if ( images ?? [] ).count > i || ( activeImages ?? [] ).count > i {
-            if (i < currentTab) {
+            if (i < currentTab - (justCheckCompleted ? 1 : 0)) {
                 drawSuccessImage(step: i, at: buttonRect)
             } else {
                 drawImage(step: i, at: buttonRect)
@@ -270,15 +271,15 @@ open class SteppedProgressBar: UIView {
         let circlePath = UIBezierPath(ovalIn: buttonRect)
         
         #if swift(>=4.0)
-            var attributes = [NSAttributedStringKey.foregroundColor : textColor, NSAttributedStringKey.paragraphStyle: paragraphStyle]
+        var attributes = [NSAttributedStringKey.foregroundColor : textColor, NSAttributedStringKey.paragraphStyle: paragraphStyle]
         #else
-            var attributes = [NSForegroundColorAttributeName : textColor, NSParagraphStyleAttributeName: paragraphStyle]
+        var attributes = [NSForegroundColorAttributeName : textColor, NSParagraphStyleAttributeName: paragraphStyle]
         #endif
-
+        
         let index =  i
-
+        
         // If a successImage was drawn dont draw text under it
-        if index >= currentTab || ( activeImages ?? [] ).count <= index {
+        if index >= currentTab - (justCheckCompleted ? 1 : 0) || ( activeImages ?? [] ).count <= index {
             //draw index
             if stepDrawingMode == .drawIndex  {
                 let buttonTitle = "\(index + 1)"
