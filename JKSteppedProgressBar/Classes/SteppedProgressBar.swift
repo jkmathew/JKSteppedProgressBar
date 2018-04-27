@@ -94,6 +94,10 @@ open class SteppedProgressBar: UIView {
         }
     }
     
+    // Changes the tint color of theactiveImages image to the activeColor
+    @IBInspectable open  var tintActiveImage = false
+    @IBInspectable open var justCheckCompleted = true
+    
     /*
      This will redraw and change color for the steps which are done. For example, if we set this as Red, Orange,
      Yellow, Green, then when you are at step one, it(circle and lines to circle) be Red, and when you are in second
@@ -124,6 +128,12 @@ open class SteppedProgressBar: UIView {
     open var images: [UIImage]? {
         didSet {
             stepDrawingMode = .image
+            self.setNeedsDisplay()
+        }
+    }
+    
+    open var activeImages: [UIImage]? {
+        didSet {
             self.setNeedsDisplay()
         }
     }
@@ -220,18 +230,40 @@ open class SteppedProgressBar: UIView {
      * Draws the images with a predefined inset
      */
     func drawImage(step i: Int, at rect: CGRect) {
-        guard (images ?? []).count > i else {
+        guard ( images ?? [] ).count > i else {
             return
         }
+        draw(image: ( images ?? [] )[i] as UIImage, in: rect)
+    }
+    
+    /*
+     * Draws the successImage. If tintActiveImage change the tint of the UIImage
+     */
+    func drawSuccessImage(step i: Int, at rect: CGRect) {
+        guard ( activeImages ?? [] ).count > i else {
+            drawImage(step: i, at: rect)
+            return
+        }
+        draw(image: tintActiveImage ?
+            (( activeImages ?? [] )[i] as UIImage).imageWithColor(activeColor)
+            : ( activeImages ?? [] )[i] as UIImage, in: rect)
+    }
+    
+    func draw(image : UIImage, in rect: CGRect) {
         let insideRect = rect.insetBy(dx: 8, dy: 8)
-        let image = ( images ?? [] )[i] as UIImage
         image.draw(in: insideRect)
     }
     
     func draw(step i: Int, path: UIBezierPath, start point: inout CGPoint, textColor: UIColor) {
         let buttonRect = CGRect.make(center: point, diameter: circleRadius)
-        if ( images ?? [] ).count > i {
-            drawImage(step: i, at: buttonRect)
+        
+        // Check if images are set and decide what image to draw
+        if ( images ?? [] ).count > i || ( activeImages ?? [] ).count > i {
+            if (i < currentTab - (justCheckCompleted ? 1 : 0)) {
+                drawSuccessImage(step: i, at: buttonRect)
+            } else {
+                drawImage(step: i, at: buttonRect)
+            }
         }
         
         //draw circle
@@ -239,24 +271,29 @@ open class SteppedProgressBar: UIView {
         let circlePath = UIBezierPath(ovalIn: buttonRect)
         
         #if swift(>=4.0)
-            var attributes = [NSAttributedStringKey.foregroundColor : textColor, NSAttributedStringKey.paragraphStyle: paragraphStyle]
+        var attributes = [NSAttributedStringKey.foregroundColor : textColor, NSAttributedStringKey.paragraphStyle: paragraphStyle]
         #else
-            var attributes = [NSForegroundColorAttributeName : textColor, NSParagraphStyleAttributeName: paragraphStyle]
+        var attributes = [NSForegroundColorAttributeName : textColor, NSParagraphStyleAttributeName: paragraphStyle]
         #endif
-
-        //draw index
+        
         let index =  i
-        if stepDrawingMode == .drawIndex {
-            let buttonTitle = "\(index + 1)"
-            let font = UIFont.boldSystemFont(ofSize: 14.0)
-            #if swift(>=4.0)
+        
+        // If a successImage was drawn dont draw text under it
+        if index >= currentTab - (justCheckCompleted ? 1 : 0) || ( activeImages ?? [] ).count <= index {
+            //draw index
+            if stepDrawingMode == .drawIndex  {
+                let buttonTitle = "\(index + 1)"
+                let font = UIFont.boldSystemFont(ofSize: 14.0)
+                #if swift(>=4.0)
                 attributes[NSAttributedStringKey.font] = font
-            #else
+                #else
                 attributes[NSFontAttributeName] = font
-            #endif
-            let attributedButtonTitle = NSAttributedString(string: buttonTitle, attributes: attributes)
-            draw(string: attributedButtonTitle, center: point)
+                #endif
+                let attributedButtonTitle = NSAttributedString(string: buttonTitle, attributes: attributes)
+                draw(string: attributedButtonTitle, center: point)
+            }
         }
+        
         path.append(circlePath)
         
         var titleCenter = point
