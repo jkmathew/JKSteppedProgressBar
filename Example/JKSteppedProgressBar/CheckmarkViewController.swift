@@ -1,15 +1,15 @@
 //
-//  ViewController.swift
-//  JKSteppedProgressBar
+//  CheckmarkViewController.swift
+//  JKSteppedProgressBar_Example
 //
-//  Created by Johnykutty Mathew on 12/09/16.
-//  Copyright © 2016 Johnykutty Mathew. All rights reserved.
+//  Created by Etienne Wojahn on 27.04.18.
+//  Copyright © 2018 CocoaPods. All rights reserved.
 //
 
 import UIKit
 import JKSteppedProgressBar
 
-class ViewController: UIViewController {
+class CheckmarkViewController: UIViewController {
 
     @IBOutlet weak var currentTabLabel: UILabel!
     @IBOutlet weak var progressbar: SteppedProgressBar!
@@ -23,7 +23,13 @@ class ViewController: UIViewController {
     
     func configureTitleProgressBar() {
         progressbar.insets = inset
-        progressbar.titles = ["Step 1".localized, "Step 2".localized, "Step 3 step again".localized,]
+        progressbar.titles = ["Image 1".localized, "Image 2".localized, "Image 3".localized,]
+        progressbar.activeImages = [
+            UIImage(named: "check")!,
+            UIImage(named: "check")!,
+            UIImage(named: "check")!,
+        ]
+        progressbar.tintActiveImage = true
     }
     
     // MARK: Misc
@@ -40,18 +46,18 @@ class ViewController: UIViewController {
         configureTitleProgressBar()
         updateButtons(0)
     }
-
+    
     // MARK: button actions
     @IBAction func next(_ sender: AnyObject) {
         var tab = progressbar.currentTab
         tab += 1
         updateButtons(tab)
     }
-
+    
     @IBAction func prev(_ sender: AnyObject) {
         var tab = progressbar.currentTab
         tab -= 1
         updateButtons(tab)
     }
-}
 
+}

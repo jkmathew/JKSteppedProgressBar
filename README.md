@@ -44,6 +44,16 @@ JKSteppedProgressBar can be added and configured directly from storyboard.
     UIImage(named: "MinnieMouse")!,
   ]
 ```
+### setting custom color for the progress
+- after setting your titles or images, set the property **activeStepColors**
+```
+progressbar.activeStepColors = [
+  UIColor.red,
+  UIColor.orange,
+  UIColor.green,
+]
+```
+- this will change the color whenever you are at that step. For example, when you are at step 1, it will be red. And in second step, the whole progress bar will become orange and when you are at the last step, it will be green. So that the user will get a feeling of accomplishment through the steps.
 
 
 ## Demo

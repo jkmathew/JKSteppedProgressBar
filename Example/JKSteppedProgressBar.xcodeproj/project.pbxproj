@@ -8,7 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		086EA9392088157100B17463 /* String+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086EA9382088157100B17463 /* String+Utility.swift */; };
+		08DF6C7C209188670004B506 /* ImageStepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DF6C7B209188670004B506 /* ImageStepViewController.swift */; };
 		0CDD5B38FBDA8BACED6D63DA /* Pods_JKSteppedProgressBar_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DAF912FC17BC550BF39EC75 /* Pods_JKSteppedProgressBar_Tests.framework */; };
+		378D04DB20930891002D8218 /* CheckmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378D04DA20930891002D8218 /* CheckmarkViewController.swift */; };
 		4A24CB2C1F66819D000F2175 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4A24CB2E1F66819D000F2175 /* Localizable.strings */; };
 		544D1A24F7EED2CCC057B2A9 /* Pods_JKSteppedProgressBar_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C9FBD10358FE89E1E87B006 /* Pods_JKSteppedProgressBar_Example.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
@@ -31,9 +33,11 @@
 
 /* Begin PBXFileReference section */
 		086EA9382088157100B17463 /* String+Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Utility.swift"; sourceTree = "<group>"; };
+		08DF6C7B209188670004B506 /* ImageStepViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStepViewController.swift; sourceTree = "<group>"; };
 		0B84DACA8DB26D24C966F007 /* Pods-JKSteppedProgressBar_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JKSteppedProgressBar_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-JKSteppedProgressBar_Example/Pods-JKSteppedProgressBar_Example.release.xcconfig"; sourceTree = "<group>"; };
 		0FABD168D9CED3EEBAB5D5A1 /* Pods-JKSteppedProgressBar_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JKSteppedProgressBar_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-JKSteppedProgressBar_Tests/Pods-JKSteppedProgressBar_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		1A37B2758FE153A24499322D /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		378D04DA20930891002D8218 /* CheckmarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckmarkViewController.swift; sourceTree = "<group>"; };
 		38A0ECD0D0A7938C27A05D41 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		4A24CB281F668069000F2175 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Main.strings; sourceTree = "<group>"; };
 		4A24CB291F668069000F2175 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -121,6 +125,8 @@
 				086EA9372088155B00B17463 /* Utilities */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
+				08DF6C7B209188670004B506 /* ImageStepViewController.swift */,
+				378D04DA20930891002D8218 /* CheckmarkViewController.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
@@ -405,8 +411,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				378D04DB20930891002D8218 /* CheckmarkViewController.swift in Sources */,
 				086EA9392088157100B17463 /* String+Utility.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
+				08DF6C7C209188670004B506 /* ImageStepViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

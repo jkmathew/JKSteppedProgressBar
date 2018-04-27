@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="3Bd-ZP-WLs">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Title Only-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="JKSteppedProgressBar_Example" customModuleProvider="target" sceneMemberID="viewController">
@@ -53,7 +53,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eHz-z6-WGH">
-                                <rect key="frame" x="219" y="185" width="30" height="30"/>
+                                <rect key="frame" x="219" y="184.5" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Sp4-fq-02j"/>
                                     <constraint firstAttribute="width" constant="30" id="sw2-Jo-OJQ"/>
@@ -65,7 +65,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cim-ZE-7AD">
-                                <rect key="frame" x="126" y="185" width="30" height="30"/>
+                                <rect key="frame" x="126" y="184.5" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="PsJ-aG-kjp"/>
                                     <constraint firstAttribute="width" constant="30" id="ugU-bC-Pae"/>
@@ -77,7 +77,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current tab" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xz1-Jy-Azt">
-                                <rect key="frame" x="144" y="156" width="88" height="21"/>
+                                <rect key="frame" x="144" y="156.5" width="87.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -92,8 +92,49 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="WCC-jO-kGE" firstAttribute="top" secondItem="Xx9-ek-0HE" secondAttribute="bottom" constant="76" id="2t8-8p-3KK"/>
+                            <constraint firstItem="WCC-jO-kGE" firstAttribute="leading" secondItem="cim-ZE-7AD" secondAttribute="trailing" constant="20" id="68u-7d-plG"/>
+                            <constraint firstItem="WCC-jO-kGE" firstAttribute="centerX" secondItem="xz1-Jy-Azt" secondAttribute="centerX" id="AcA-qT-4fo"/>
+                            <constraint firstItem="WCC-jO-kGE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="M5d-Pd-lAo"/>
+                            <constraint firstItem="WCC-jO-kGE" firstAttribute="top" secondItem="xz1-Jy-Azt" secondAttribute="bottom" constant="12" id="c1D-Li-B1B"/>
+                            <constraint firstItem="Xx9-ek-0HE" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="dWS-DA-1Bo"/>
+                            <constraint firstItem="eHz-z6-WGH" firstAttribute="leading" secondItem="WCC-jO-kGE" secondAttribute="trailing" constant="20" id="dg7-VM-b8e"/>
+                            <constraint firstItem="Xx9-ek-0HE" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="hUM-Iq-2ij"/>
+                            <constraint firstItem="WCC-jO-kGE" firstAttribute="centerY" secondItem="eHz-z6-WGH" secondAttribute="centerY" id="ns9-Ds-2bp"/>
+                            <constraint firstItem="WCC-jO-kGE" firstAttribute="centerY" secondItem="cim-ZE-7AD" secondAttribute="centerY" id="r1d-6m-I2X"/>
+                            <constraint firstAttribute="trailing" secondItem="Xx9-ek-0HE" secondAttribute="trailing" constant="20" id="xHy-e3-WOm"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Title Only" id="wsa-BD-Zbu"/>
+                    <connections>
+                        <outlet property="currentTabLabel" destination="WCC-jO-kGE" id="CxQ-aq-MCh"/>
+                        <outlet property="nextButton" destination="eHz-z6-WGH" id="eQw-Mm-goR"/>
+                        <outlet property="prevButton" destination="cim-ZE-7AD" id="88e-fM-Dkw"/>
+                        <outlet property="progressbar" destination="Xx9-ek-0HE" id="asi-0b-lw3"/>
+                        <outlet property="progressbarWithImages" destination="bpc-Bk-1Wh" id="qUg-KD-3Ni"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1448.8" y="309.89505247376314"/>
+        </scene>
+        <!--Image-->
+        <scene sceneID="Q42-yP-HPh">
+            <objects>
+                <viewController id="Fij-x3-w53" customClass="ImageStepViewController" customModule="JKSteppedProgressBar_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ail-A4-zWS"/>
+                        <viewControllerLayoutGuide type="bottom" id="P6S-be-Glt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Cra-JF-Gdi">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bpc-Bk-1Wh" customClass="SteppedProgressBar" customModule="JKSteppedProgressBar">
-                                <rect key="frame" x="20" y="257" width="335" height="85"/>
+                                <rect key="frame" x="16" y="32" width="335" height="85"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="85" id="nUf-sJ-3L5"/>
@@ -122,11 +163,111 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kl8-0V-RrL" customClass="SteppedProgressBar" customModule="JKSteppedProgressBar">
-                                <rect key="frame" x="20" y="382" width="335" height="85"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vCP-aS-iBc">
+                                <rect key="frame" x="219" y="212" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="GPC-b3-aXH"/>
+                                    <constraint firstAttribute="width" constant="30" id="nLh-ci-7Lh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                                <state key="normal" title="+"/>
+                                <connections>
+                                    <action selector="next:" destination="Fij-x3-w53" eventType="touchUpInside" id="Oy2-6l-bPp"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MLd-E2-2bJ">
+                                <rect key="frame" x="126" y="212" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="4i3-sn-GGW"/>
+                                    <constraint firstAttribute="height" constant="30" id="ddH-rG-UPN"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                                <state key="normal" title="-"/>
+                                <connections>
+                                    <action selector="prev:" destination="Fij-x3-w53" eventType="touchUpInside" id="PRW-qF-qOV"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current tab" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Me-rq-hb5">
+                                <rect key="frame" x="144" y="184" width="87.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kMH-Nx-XXT">
+                                <rect key="frame" x="176" y="216" width="23" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="6m7-4x-JC3"/>
+                                    <constraint firstAttribute="width" constant="23" id="FWg-0m-g2A"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="0Me-rq-hb5" firstAttribute="top" secondItem="bpc-Bk-1Wh" secondAttribute="bottom" constant="67" id="AOl-rG-Zmc"/>
+                            <constraint firstItem="bpc-Bk-1Wh" firstAttribute="top" secondItem="Ail-A4-zWS" secondAttribute="bottom" constant="12" id="Gak-Ju-Gve"/>
+                            <constraint firstItem="kMH-Nx-XXT" firstAttribute="centerY" secondItem="MLd-E2-2bJ" secondAttribute="centerY" id="PKm-11-EfO"/>
+                            <constraint firstItem="kMH-Nx-XXT" firstAttribute="centerX" secondItem="0Me-rq-hb5" secondAttribute="centerX" id="Ugh-LH-KVC"/>
+                            <constraint firstItem="kMH-Nx-XXT" firstAttribute="top" secondItem="0Me-rq-hb5" secondAttribute="bottom" constant="12" id="YJ8-gV-pYq"/>
+                            <constraint firstItem="kMH-Nx-XXT" firstAttribute="leading" secondItem="MLd-E2-2bJ" secondAttribute="trailing" constant="20" id="ffF-nw-t1p"/>
+                            <constraint firstItem="0Me-rq-hb5" firstAttribute="centerX" secondItem="Cra-JF-Gdi" secondAttribute="centerX" id="fgw-BY-I0y"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="bpc-Bk-1Wh" secondAttribute="trailing" constant="8" id="iQS-5D-uRK"/>
+                            <constraint firstItem="vCP-aS-iBc" firstAttribute="leading" secondItem="kMH-Nx-XXT" secondAttribute="trailing" constant="20" id="qeD-j8-cMj"/>
+                            <constraint firstItem="kMH-Nx-XXT" firstAttribute="centerY" secondItem="vCP-aS-iBc" secondAttribute="centerY" id="tag-8r-IGQ"/>
+                            <constraint firstItem="bpc-Bk-1Wh" firstAttribute="leading" secondItem="Cra-JF-Gdi" secondAttribute="leadingMargin" id="xB2-6M-vaJ"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Image" id="6YY-5l-b2f"/>
+                    <connections>
+                        <outlet property="currentTabLabel" destination="kMH-Nx-XXT" id="4Fy-C7-hdY"/>
+                        <outlet property="nextButton" destination="vCP-aS-iBc" id="RXf-aP-yUp"/>
+                        <outlet property="prevButton" destination="MLd-E2-2bJ" id="jqu-UW-Gzc"/>
+                        <outlet property="progressbarWithImages" destination="bpc-Bk-1Wh" id="QzM-1R-InW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ejB-gr-z4A" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2160.8000000000002" y="309.89505247376314"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="cGB-9T-sc4">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="3Bd-ZP-WLs" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" id="3My-qB-3ZE">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="E6Z-3M-Dws"/>
+                        <segue destination="Fij-x3-w53" kind="relationship" relationship="viewControllers" id="8Q0-AD-WJW"/>
+                        <segue destination="ReF-ga-Ng4" kind="relationship" relationship="viewControllers" id="Y8c-JD-oyS"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="l54-Bz-GH5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="509.60000000000002" y="309.89505247376314"/>
+        </scene>
+        <!--Checkmarks-->
+        <scene sceneID="ycU-8e-fNs">
+            <objects>
+                <viewController id="ReF-ga-Ng4" customClass="CheckmarkViewController" customModule="JKSteppedProgressBar_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="NFv-Ld-0Eg"/>
+                        <viewControllerLayoutGuide type="bottom" id="t0g-Ig-D4P"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="LeA-ow-fjg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BpS-Cl-NAG" customClass="SteppedProgressBar" customModule="JKSteppedProgressBar">
+                                <rect key="frame" x="20" y="28" width="335" height="85"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="85" id="tbu-jk-za1"/>
+                                    <constraint firstAttribute="height" constant="85" id="x18-Jc-Bpn"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
@@ -152,40 +293,74 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WMg-V8-JXa">
+                                <rect key="frame" x="219" y="184.5" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="XVz-2a-Kpj"/>
+                                    <constraint firstAttribute="height" constant="30" id="yeO-3N-cY5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                                <state key="normal" title="+"/>
+                                <connections>
+                                    <action selector="next:" destination="ReF-ga-Ng4" eventType="touchUpInside" id="Y9P-4S-6sI"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PSz-wJ-ur4">
+                                <rect key="frame" x="126" y="184.5" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="k86-ko-hYT"/>
+                                    <constraint firstAttribute="width" constant="30" id="vw1-Lw-iCI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                                <state key="normal" title="-"/>
+                                <connections>
+                                    <action selector="prev:" destination="ReF-ga-Ng4" eventType="touchUpInside" id="I0o-6a-iOU"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current tab" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZJn-BG-dr1">
+                                <rect key="frame" x="144" y="156.5" width="87.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vB6-5e-mgJ">
+                                <rect key="frame" x="176" y="189" width="23" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="23" id="fwl-fl-N75"/>
+                                    <constraint firstAttribute="height" constant="21" id="w6q-pA-9Qw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="WCC-jO-kGE" firstAttribute="top" secondItem="Xx9-ek-0HE" secondAttribute="bottom" constant="76" id="2t8-8p-3KK"/>
-                            <constraint firstItem="WCC-jO-kGE" firstAttribute="leading" secondItem="cim-ZE-7AD" secondAttribute="trailing" constant="20" id="68u-7d-plG"/>
-                            <constraint firstItem="WCC-jO-kGE" firstAttribute="centerX" secondItem="xz1-Jy-Azt" secondAttribute="centerX" id="AcA-qT-4fo"/>
-                            <constraint firstItem="WCC-jO-kGE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="M5d-Pd-lAo"/>
-                            <constraint firstItem="kl8-0V-RrL" firstAttribute="leading" secondItem="bpc-Bk-1Wh" secondAttribute="leading" id="MTL-dH-Jjb"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="bpc-Bk-1Wh" secondAttribute="trailing" constant="4" id="Pve-r6-lIy"/>
-                            <constraint firstItem="WCC-jO-kGE" firstAttribute="top" secondItem="xz1-Jy-Azt" secondAttribute="bottom" constant="12" id="c1D-Li-B1B"/>
-                            <constraint firstItem="Xx9-ek-0HE" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="dWS-DA-1Bo"/>
-                            <constraint firstItem="eHz-z6-WGH" firstAttribute="leading" secondItem="WCC-jO-kGE" secondAttribute="trailing" constant="20" id="dg7-VM-b8e"/>
-                            <constraint firstItem="Xx9-ek-0HE" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="hUM-Iq-2ij"/>
-                            <constraint firstItem="WCC-jO-kGE" firstAttribute="centerY" secondItem="eHz-z6-WGH" secondAttribute="centerY" id="ns9-Ds-2bp"/>
-                            <constraint firstItem="kl8-0V-RrL" firstAttribute="top" secondItem="bpc-Bk-1Wh" secondAttribute="bottom" constant="40" id="oqu-zS-gic"/>
-                            <constraint firstItem="bpc-Bk-1Wh" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="4" id="pL7-Xx-N6z"/>
-                            <constraint firstItem="bpc-Bk-1Wh" firstAttribute="top" secondItem="eHz-z6-WGH" secondAttribute="bottom" constant="42.5" id="pQ4-Vf-Iem"/>
-                            <constraint firstItem="kl8-0V-RrL" firstAttribute="trailing" secondItem="bpc-Bk-1Wh" secondAttribute="trailing" id="pUJ-Jy-1dk"/>
-                            <constraint firstItem="WCC-jO-kGE" firstAttribute="centerY" secondItem="cim-ZE-7AD" secondAttribute="centerY" id="r1d-6m-I2X"/>
-                            <constraint firstAttribute="trailing" secondItem="Xx9-ek-0HE" secondAttribute="trailing" constant="20" id="xHy-e3-WOm"/>
+                            <constraint firstAttribute="trailing" secondItem="BpS-Cl-NAG" secondAttribute="trailing" constant="20" id="76Y-AK-ysv"/>
+                            <constraint firstItem="vB6-5e-mgJ" firstAttribute="centerY" secondItem="WMg-V8-JXa" secondAttribute="centerY" id="Fsj-Ep-BMW"/>
+                            <constraint firstItem="vB6-5e-mgJ" firstAttribute="centerX" secondItem="LeA-ow-fjg" secondAttribute="centerX" id="Jvn-n7-TnT"/>
+                            <constraint firstItem="BpS-Cl-NAG" firstAttribute="top" secondItem="NFv-Ld-0Eg" secondAttribute="bottom" constant="8" id="R4k-Gt-YSc"/>
+                            <constraint firstItem="vB6-5e-mgJ" firstAttribute="leading" secondItem="PSz-wJ-ur4" secondAttribute="trailing" constant="20" id="RZF-Ix-lbd"/>
+                            <constraint firstItem="vB6-5e-mgJ" firstAttribute="top" secondItem="ZJn-BG-dr1" secondAttribute="bottom" constant="12" id="V0g-A2-P2r"/>
+                            <constraint firstItem="vB6-5e-mgJ" firstAttribute="centerY" secondItem="PSz-wJ-ur4" secondAttribute="centerY" id="XEl-IL-Q78"/>
+                            <constraint firstItem="WMg-V8-JXa" firstAttribute="leading" secondItem="vB6-5e-mgJ" secondAttribute="trailing" constant="20" id="fK4-NQ-G6m"/>
+                            <constraint firstItem="vB6-5e-mgJ" firstAttribute="centerX" secondItem="ZJn-BG-dr1" secondAttribute="centerX" id="kfg-Y3-kfR"/>
+                            <constraint firstItem="BpS-Cl-NAG" firstAttribute="leading" secondItem="LeA-ow-fjg" secondAttribute="leading" constant="20" id="pRR-wX-Azp"/>
+                            <constraint firstItem="vB6-5e-mgJ" firstAttribute="top" secondItem="BpS-Cl-NAG" secondAttribute="bottom" constant="76" id="uuK-GB-TSe"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Checkmarks" id="Fjc-vS-6lX"/>
                     <connections>
-                        <outlet property="currentTabLabel" destination="WCC-jO-kGE" id="CxQ-aq-MCh"/>
-                        <outlet property="nextButton" destination="eHz-z6-WGH" id="eQw-Mm-goR"/>
-                        <outlet property="prevButton" destination="cim-ZE-7AD" id="88e-fM-Dkw"/>
-                        <outlet property="progressBarWithActiveImages" destination="kl8-0V-RrL" id="BgU-8t-C65"/>
-                        <outlet property="progressbar" destination="Xx9-ek-0HE" id="asi-0b-lw3"/>
-                        <outlet property="progressbarWithImages" destination="bpc-Bk-1Wh" id="qUg-KD-3Ni"/>
+                        <outlet property="currentTabLabel" destination="vB6-5e-mgJ" id="Hfa-1D-D0e"/>
+                        <outlet property="nextButton" destination="WMg-V8-JXa" id="Q7t-TN-eli"/>
+                        <outlet property="prevButton" destination="PSz-wJ-ur4" id="3xp-fr-K25"/>
+                        <outlet property="progressbar" destination="BpS-Cl-NAG" id="Ecf-mH-sc0"/>
+                        <outlet property="progressbarWithImages" destination="bpc-Bk-1Wh" id="d1R-oZ-2s1"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8iP-lf-lYZ" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="509.60000000000002" y="309.89505247376314"/>
+            <point key="canvasLocation" x="2863" y="310"/>
         </scene>
     </scenes>
 </document>
