@@ -54,7 +54,22 @@ progressbar.activeStepColors = [
 ]
 ```
 - this will change the color whenever you are at that step. For example, when you are at step 1, it will be red. And in second step, the whole progress bar will become orange and when you are at the last step, it will be green. So that the user will get a feeling of accomplishment through the steps.
+-
+### setting custom active-images
+- this will make it possible to use this as progress for forms
+- Set your images to *activeImages* property
+- Set your tintActiveImage to tint the images to the active color (default: false)
+- Set your justCheckCompleted to select everything behind the current step but keep the current step highlighted (default: true)
 
+```
+  progressbar.activeImages = [
+      UIImage(named: "check")!,
+      UIImage(named: "check")!,
+      UIImage(named: "check")!,
+  ]
+  progressbar.tintActiveImage = true
+  progressbar.justCheckCompleted = false
+```
 
 ## Demo
 [![Demo Video](http://img.youtube.com/vi/gKFrOL7nD6I/0.jpg)](http://www.youtube.com/watch?v=gKFrOL7nD6I)
