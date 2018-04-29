@@ -13,7 +13,6 @@ public let SteppedProgressBarAutomaticDimension: CGFloat = -1
 public enum StepDrawingMode: Int {
     case fill
     case drawIndex
-    // TODO:
     case image
 }
 
