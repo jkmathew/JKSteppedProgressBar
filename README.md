@@ -78,11 +78,13 @@ progressbar.activeStepColors = [
 
 ## TODO
 - [x] Add image for steps
-- [ ] Respect language direction for drawing
+- [x] Respect language direction for drawing
 
 ## Author
 
 Johnykutty, johnykutty.mathew@gmail.com
+Jayahari V, jayahariv88@gmail.com
+and [others](https://github.com/jkmathew/JKSteppedProgressBar/graphs/contributors)
 
 ## License
 
