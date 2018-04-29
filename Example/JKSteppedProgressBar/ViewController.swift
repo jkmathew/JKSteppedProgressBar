@@ -23,7 +23,13 @@ class ViewController: UIViewController {
     
     func configureTitleProgressBar() {
         progressbar.insets = inset
+        progressbar.stepDrawingMode = .fill
         progressbar.titles = ["Step 1".localized, "Step 2".localized, "Step 3 step again".localized,]
+        progressbar.activeStepColors = [
+            UIColor.red,
+            UIColor.orange,
+            UIColor.green,
+        ]
     }
     
     // MARK: Misc

@@ -195,7 +195,6 @@
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
 				C607A2CD4D69FA5D866293A2 /* [CP] Embed Pods Frameworks */,
-				B5620B13ADE31FE3FEB49B48 /* [CP] Copy Pods Resources */,
 				4A4947DF1F46E52400BC624C /* ShellScript */,
 			);
 			buildRules = (
@@ -215,8 +214,6 @@
 				607FACE11AFB9204008FA782 /* Sources */,
 				607FACE21AFB9204008FA782 /* Frameworks */,
 				607FACE31AFB9204008FA782 /* Resources */,
-				CC2B6F7CA4FD07AB64F7A135 /* [CP] Embed Pods Frameworks */,
-				C8B8480BAEA06DDA508AA49B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -323,21 +320,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B5620B13ADE31FE3FEB49B48 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JKSteppedProgressBar_Example/Pods-JKSteppedProgressBar_Example-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		C607A2CD4D69FA5D866293A2 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -354,36 +336,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JKSteppedProgressBar_Example/Pods-JKSteppedProgressBar_Example-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C8B8480BAEA06DDA508AA49B /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JKSteppedProgressBar_Tests/Pods-JKSteppedProgressBar_Tests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CC2B6F7CA4FD07AB64F7A135 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JKSteppedProgressBar_Tests/Pods-JKSteppedProgressBar_Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FABA355B3417FEB982D2A38E /* [CP] Check Pods Manifest.lock */ = {
