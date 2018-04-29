@@ -116,8 +116,8 @@ open class SteppedProgressBar: UIView {
      activeColor */
     private func activeStepColor(_ tabIndex: Int) -> UIColor {
         var activeStepColor = activeColor
-        if let activeStepColors = activeStepColors, tabIndex - 1 < activeStepColors.count {
-            activeStepColor = activeStepColors[tabIndex - 1]
+        if let activeStepColors = activeStepColors, tabIndex < activeStepColors.count {
+            activeStepColor = activeStepColors[tabIndex]
         }
         return activeStepColor
     }
@@ -204,9 +204,11 @@ open class SteppedProgressBar: UIView {
         var start = point
         start.x -= languageFactor * circleRadius / 2.0
         
-        let path = UIBezierPath()
-        path.lineWidth = lineWidth
         for i in begin..<end {
+            let path = UIBezierPath()
+            path.lineWidth = lineWidth
+            
+            let textColor = (i < currentTab) ? activeStepColor(i) : inactiveTextColor
             draw(step: i, path: path, start : &point, textColor: textColor)
             if i != (end - 1) {
                 //draw trailinng line
@@ -214,13 +216,15 @@ open class SteppedProgressBar: UIView {
                 path.addLine(to: point)
                 point.x += languageFactor * circleRadius / 2.0
             }
-        }
-        let context = UIGraphicsGetCurrentContext()
-        context?.setStrokeColor(color.cgColor)
-        context?.setFillColor(color.cgColor)
-        path.stroke()
-        if stepDrawingMode == .fill {
-            path.fill()
+            let color = (i < currentTab) ? activeStepColor(i) : inactiveColor
+            let context = UIGraphicsGetCurrentContext()
+            context?.setStrokeColor(color.cgColor)
+            context?.setFillColor(color.cgColor)
+            path.stroke()
+            if stepDrawingMode == .fill {
+                path.fill()
+            }
+            
         }
 
         return (start: start, end: point)
