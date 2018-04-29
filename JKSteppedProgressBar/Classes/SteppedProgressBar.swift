@@ -164,16 +164,14 @@ open class SteppedProgressBar: UIView {
     override open func draw(_ rect: CGRect) {
         let context = UIGraphicsGetCurrentContext()
         
-        if currentTab == 0 {
-            drawTabs(from: 0, to: numberOfItems, color: inactiveColor, textColor: inactiveTextColor)
-        } else if currentTab == numberOfItems {
-            drawTabs(from: 0, to: numberOfItems, color: activeStepColor(currentTab), textColor: activeStepColor(currentTab))
+        if currentTab == 0 || currentTab == numberOfItems {
+            drawTabs(from: 0, to: numberOfItems)
         }
         else {
             // Addressing issue #3
             // https://github.com/jkmathew/JKSteppedProgressBar/issues/3
             // Drawing in the order 1.inactive, 2.Line between active and inactive, 3.Active to avoid overlaping issue
-            let end = drawTabs(from: currentTab, to: numberOfItems, color: inactiveColor, textColor: inactiveTextColor).start
+            let end = drawTabs(from: currentTab, to: numberOfItems).start
             let path = UIBezierPath()
             path.lineWidth = lineWidth
             
@@ -184,7 +182,7 @@ open class SteppedProgressBar: UIView {
             context?.setStrokeColor(inactiveColor.cgColor)
             path.stroke()
             
-            drawTabs(from: 0, to: currentTab , color: activeStepColor(currentTab), textColor: activeStepColor(currentTab))
+            drawTabs(from: 0, to: currentTab)
          
         }
     }
@@ -195,7 +193,7 @@ open class SteppedProgressBar: UIView {
     }
     
     @discardableResult
-    func drawTabs(from begin: Int, to end: Int, color: UIColor, textColor: UIColor) -> (start: CGPoint, end: CGPoint) {
+    func drawTabs(from begin: Int, to end: Int) -> (start: CGPoint, end: CGPoint) {
         let halfX = (CGFloat(numberOfItems - 1) * (actualSpacing + circleRadius) / 2.0)
         let startX =  availableFrame.midX - languageFactor * halfX
         let x = startX + languageFactor * (actualSpacing + circleRadius) * CGFloat(begin)
