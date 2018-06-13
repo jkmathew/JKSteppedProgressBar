@@ -10,4 +10,9 @@ extension UIImage {
         UIGraphicsEndImageContext()
         return image
     }
+    
+    func draw(inside rect: CGRect) {
+        let insideRect = rect.insetBy(dx: 8, dy: 8)
+        self.draw(in: insideRect)
+    }
 }
