@@ -13,14 +13,17 @@ public let SteppedProgressBarAutomaticDimension: CGFloat = -1
 public enum StepDrawingMode: Int {
     case fill
     case drawIndex
-    // TODO:
     case image
 }
 
 @IBDesignable
 open class SteppedProgressBar: UIView {
+    
+    // MARK: PROPERTIES
 
     let paragraphStyle = NSMutableParagraphStyle()
+    
+    // MARK: IBInspectable Properties
 
     @IBInspectable open var activeColor: UIColor = UIColor.green {
         didSet {
@@ -65,12 +68,17 @@ open class SteppedProgressBar: UIView {
             self.setNeedsDisplay()
         }
     }
+
     
     @IBInspectable open var currentTab: Int = 0 {
         didSet {
             self.setNeedsDisplay()
         }
     }
+    
+    // Changes the tint color of theactiveImages image to the activeColor
+    @IBInspectable open  var tintActiveImage = false
+    @IBInspectable open var justCheckCompleted = true
     
     open var stepDrawingMode: StepDrawingMode = .drawIndex {
         didSet {
@@ -84,19 +92,22 @@ open class SteppedProgressBar: UIView {
         }
     }
     
-    private var actualSpacing: CGFloat {
-        return (circleSpacing == SteppedProgressBarAutomaticDimension) ? (availableFrame.width - 6.0 - (CGFloat(numberOfItems) * circleRadius)) / CGFloat(numberOfItems - 1) : circleSpacing
-    }
-    
     open var titles = ["One", "Two","Three", "Four","Five", "Six"] {
         didSet {
             self.setNeedsDisplay()
         }
     }
     
-    // Changes the tint color of theactiveImages image to the activeColor
-    @IBInspectable open  var tintActiveImage = false
-    @IBInspectable open var justCheckCompleted = true
+    var availableFrame: CGRect {
+        var correctedFrame = bounds
+        correctedFrame.origin.x = insets.left
+        correctedFrame.origin.y = insets.top
+        
+        correctedFrame.size.width -= insets.left + insets.right
+        correctedFrame.size.height -= insets.top + insets.bottom
+        
+        return correctedFrame
+    }
     
     /*
      This will redraw and change color for the steps which are done. For example, if we set this as Red, Orange,
@@ -112,15 +123,7 @@ open class SteppedProgressBar: UIView {
         }
     }
     
-    /* Returns the active step color to the caller, if its mentioned in activeStepColors array. If not return the
-     activeColor */
-    private func activeStepColor(_ tabIndex: Int) -> UIColor {
-        var activeStepColor = activeColor
-        if let activeStepColors = activeStepColors, tabIndex - 1 < activeStepColors.count {
-            activeStepColor = activeStepColors[tabIndex - 1]
-        }
-        return activeStepColor
-    }
+    // MARK: Image Helper properties
     
     /*
      * setting images will only show the images instead of any text mentioned
@@ -138,15 +141,12 @@ open class SteppedProgressBar: UIView {
         }
     }
     
-    var availableFrame: CGRect {
-        var correctedFrame = bounds
-        correctedFrame.origin.x = insets.left
-        correctedFrame.origin.y = insets.top
-        
-        correctedFrame.size.width -= insets.left + insets.right
-        correctedFrame.size.height -= insets.top + insets.bottom
-        
-        return correctedFrame
+    
+    // MARK: Private Properties
+    private var actualSpacing: CGFloat {
+        return (circleSpacing == SteppedProgressBarAutomaticDimension)
+            ? (availableFrame.width - 6.0 - (CGFloat(numberOfItems) * circleRadius)) / CGFloat(numberOfItems - 1)
+            : circleSpacing
     }
     
     private var languageFactor: CGFloat {
@@ -156,6 +156,11 @@ open class SteppedProgressBar: UIView {
     private var numberOfItems: Int {
         return stepDrawingMode == .image ? (images ?? []).count : titles.count
     }
+    
+    
+    // MARK: METHODS
+    
+    // MARK: View Lifecycle Methods
     
     override open func awakeFromNib() {
         super.awakeFromNib()
@@ -194,6 +199,8 @@ open class SteppedProgressBar: UIView {
         super.layoutSubviews()
         self.setNeedsDisplay()
     }
+    
+    // MARK: Draw Helper Methods
     
     @discardableResult
     func drawTabs(from begin: Int, to end: Int, color: UIColor, textColor: UIColor) -> (start: CGPoint, end: CGPoint) {
@@ -318,6 +325,18 @@ open class SteppedProgressBar: UIView {
         let origin = CGPoint(x: center.x - size.width / 2.0, y: center.y - size.height / 2.0)
         rect.origin = origin
         string.draw(in: rect)
-        
+    }
+}
+
+private extension SteppedProgressBar {
+    
+    /* Returns the active step color to the caller, if its mentioned in activeStepColors array. If not return the
+     activeColor */
+    func activeStepColor(_ tabIndex: Int) -> UIColor {
+        var activeStepColor = activeColor
+        if let activeStepColors = activeStepColors, tabIndex - 1 < activeStepColors.count {
+            activeStepColor = activeStepColors[tabIndex - 1]
+        }
+        return activeStepColor
     }
 }
