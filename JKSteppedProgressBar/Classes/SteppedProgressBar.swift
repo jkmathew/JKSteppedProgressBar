@@ -292,7 +292,8 @@ open class SteppedProgressBar: UIView {
                 #else
                 attributes[NSFontAttributeName] = font
                 #endif
-                NSAttributedString(string: buttonTitle, attributes: attributes).draw(center: point)
+                let attributedString = NSAttributedString(string: buttonTitle, attributes: attributes)
+                attributedString.draw(center: point)
             }
         }
         
@@ -306,7 +307,8 @@ open class SteppedProgressBar: UIView {
         #else
             attributes[NSFontAttributeName] = UIFont.boldSystemFont(ofSize: 12.0)
         #endif
-        NSAttributedString(string: title, attributes: attributes).draw(center: titleCenter)
+        let attributedString = NSAttributedString(string: title, attributes: attributes)
+        attributedString.draw(center: titleCenter)
         
         point.x += languageFactor * circleRadius / 2.0
         path.move(to: point)
