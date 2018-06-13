@@ -240,7 +240,7 @@ open class SteppedProgressBar: UIView {
         guard ( images ?? [] ).count > i else {
             return
         }
-        draw(image: ( images ?? [] )[i] as UIImage, in: rect)
+        ( images ?? [] )[i].draw(inside: rect)
     }
     
     /*
@@ -251,14 +251,10 @@ open class SteppedProgressBar: UIView {
             drawImage(step: i, at: rect)
             return
         }
-        draw(image: tintActiveImage ?
-            (( activeImages ?? [] )[i] as UIImage).imageWithColor(activeColor)
-            : ( activeImages ?? [] )[i] as UIImage, in: rect)
-    }
-    
-    func draw(image : UIImage, in rect: CGRect) {
-        let insideRect = rect.insetBy(dx: 8, dy: 8)
-        image.draw(in: insideRect)
+        (tintActiveImage
+            ? ( activeImages ?? [] )[i].imageWithColor(activeColor)
+            : ( activeImages ?? [] )[i])
+                .draw(inside: rect)
     }
     
     func draw(step i: Int, path: UIBezierPath, start point: inout CGPoint, textColor: UIColor) {
@@ -296,8 +292,7 @@ open class SteppedProgressBar: UIView {
                 #else
                 attributes[NSFontAttributeName] = font
                 #endif
-                let attributedButtonTitle = NSAttributedString(string: buttonTitle, attributes: attributes)
-                draw(string: attributedButtonTitle, center: point)
+                NSAttributedString(string: buttonTitle, attributes: attributes).draw(center: point)
             }
         }
         
@@ -311,20 +306,11 @@ open class SteppedProgressBar: UIView {
         #else
             attributes[NSFontAttributeName] = UIFont.boldSystemFont(ofSize: 12.0)
         #endif
-        let attributedTitle = NSAttributedString(string: title, attributes: attributes)
-        draw(string: attributedTitle, center: titleCenter)
+        NSAttributedString(string: title, attributes: attributes).draw(center: titleCenter)
         
         point.x += languageFactor * circleRadius / 2.0
         path.move(to: point)
         
-    }
-    
-    func draw(string: NSAttributedString, center: CGPoint) {
-        var rect = string.boundingRect(with: CGSize(width: 1000, height: 1000), options: .usesFontLeading, context: nil)
-        let size = rect.size
-        let origin = CGPoint(x: center.x - size.width / 2.0, y: center.y - size.height / 2.0)
-        rect.origin = origin
-        string.draw(in: rect)
     }
 }
 
