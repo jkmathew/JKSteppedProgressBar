@@ -274,7 +274,7 @@ open class SteppedProgressBar: UIView {
         let circlePath = UIBezierPath(ovalIn: buttonRect)
         
         #if swift(>=4.0)
-        var attributes = [NSAttributedStringKey.foregroundColor : textColor, NSAttributedStringKey.paragraphStyle: paragraphStyle]
+        var attributes = [NSAttributedString.Key.foregroundColor : textColor, NSAttributedString.Key.paragraphStyle: paragraphStyle]
         #else
         var attributes = [NSForegroundColorAttributeName : textColor, NSParagraphStyleAttributeName: paragraphStyle]
         #endif
@@ -288,7 +288,7 @@ open class SteppedProgressBar: UIView {
                 let buttonTitle = "\(index + 1)"
                 let font = UIFont.boldSystemFont(ofSize: 14.0)
                 #if swift(>=4.0)
-                attributes[NSAttributedStringKey.font] = font
+                attributes[NSAttributedString.Key.font] = font
                 #else
                 attributes[NSFontAttributeName] = font
                 #endif
@@ -303,7 +303,7 @@ open class SteppedProgressBar: UIView {
         titleCenter.y += circleRadius * 0.75 + titleOffset
         let title = titles[index]
         #if swift(>=4.0)
-            attributes[NSAttributedStringKey.font] = UIFont.boldSystemFont(ofSize: 12.0)
+        attributes[NSAttributedString.Key.font] = UIFont.boldSystemFont(ofSize: 12.0)
         #else
             attributes[NSFontAttributeName] = UIFont.boldSystemFont(ofSize: 12.0)
         #endif
