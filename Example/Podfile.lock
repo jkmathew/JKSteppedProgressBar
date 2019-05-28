@@ -9,8 +9,8 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  JKSteppedProgressBar: aef0f0ffa5a0706cff7170157f1961dc23d1f18c
+  JKSteppedProgressBar: b55bcac777c5b256375d6ae75cca93b75c5d8672
 
 PODFILE CHECKSUM: ba934cd1a7deb75a79c480358beefa12dc74330d
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.7.0

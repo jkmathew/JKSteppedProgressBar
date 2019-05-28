@@ -5,6 +5,6 @@
       location = "group:JKSteppedProgressBar.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:/Users/quan.pham/Projects/Github/JKSteppedProgressBar/Example/Pods/t.xcodeproj">
+      location = "group:Pods/Pods.xcodeproj">
    </FileRef>
 </Workspace>
