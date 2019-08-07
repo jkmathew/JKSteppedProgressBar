@@ -23,7 +23,7 @@ class ViewController: UIViewController {
     
     func configureTitleProgressBar() {
         progressbar.insets = inset
-        progressbar.titles = ["Step 1".localized, "Step 2".localized, "Step 3 step again".localized,]
+        progressbar.titles = ["Step 1".localized, "Step 2".localized, "Step 3\nstep again".localized,]
     }
     
     // MARK: Misc
