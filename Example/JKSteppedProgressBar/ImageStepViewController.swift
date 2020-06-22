@@ -52,13 +52,7 @@ class ImageStepViewController: UIViewController {
         configureProgressBarWithImages()
         updateButtons(0)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
-
     // MARK: button actions
     @IBAction func next(_ sender: AnyObject) {
         var tab = progressbarWithImages.currentTab
